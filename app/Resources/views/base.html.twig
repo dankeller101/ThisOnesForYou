@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets 'css/dev/*'
+            'css/vendor/*'
+            "http://yui.yahooapis.com/pure/0.6.0/pure-min.css"
+            "http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css"
+            filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {% javascripts
+        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'
+        'js/dev/*'
+        'js/vendor/*'
+        %}
+        <script src="{{ asset_url }}"></script>{% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>
+
+
